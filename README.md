@@ -62,7 +62,7 @@ The page is static: plain HTML and CSS, no build step, no dependencies, and it d
 
 | Task | Description | Status | Evidence |
 |---|---|---|---|
-| T-23 | Static presentation site: responsive, accessible, no API calls | Done | `index.html` and `styles.css` in this repository; checked at phone and desktop widths (16 px gutter, no horizontal scroll) |
+| T-23 | Static presentation site: responsive, accessible, no API calls | Done | `index.html` and `styles.css`; responsive via media queries at 640 px and 900 px, 16 px side gutter, `overflow-x: hidden` on body (not yet checked in a browser) |
 
 ## Design notes
 
