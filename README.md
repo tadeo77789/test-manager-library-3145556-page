@@ -62,7 +62,7 @@ The page is static: plain HTML and CSS, no build step, no dependencies, and it d
 
 | Task | Description | Status | Evidence |
 |---|---|---|---|
-| T-23 | Static presentation site: responsive, accessible, no API calls | Done | `index.html` and `styles.css`; responsive via media queries at 640 px and 900 px, 16 px side gutter, `overflow-x: hidden` on body (not yet checked in a browser) |
+| T-23 | Static presentation site: responsive, accessible, no API calls | Done | `index.html` and `styles.css`. Checked in Chrome (13-oct ~15:35) served from a static server without the API: desktop 1536 px renders correctly; phone width 390 px (iframe) → no horizontal overflow (scrollWidth = clientWidth = 372), nav wraps, hero stacks. |
 
 ## Design notes
 
