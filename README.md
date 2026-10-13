@@ -48,3 +48,24 @@ No hay prórroga: suban avances parciales con commits pequeños durante la prueb
 | [`test-manager-library-3145556-page`](https://github.com/code-sena/test-manager-library-3145556-page) | Sitio público estático de presentación |
 | [`test-manager-library-3145556-infra`](https://github.com/code-sena/test-manager-library-3145556-infra) | Contenedores, red, volúmenes y motor de base de datos vacío |
 | [`test-manager-library-3145556-tool`](https://github.com/code-sena/test-manager-library-3145556-tool) | Utilidades: sembrador de datos de demostración |
+
+---
+
+## Open the site (English)
+
+The page is static: plain HTML and CSS, no build step, no dependencies, and it does not call the API.
+
+- Double-click `index.html`, or
+- serve the folder, for example `npx serve .` or `python -m http.server 8080`, and open the printed URL.
+
+## Task status
+
+| Task | Description | Status | Evidence |
+|---|---|---|---|
+| T-23 | Static presentation site: responsive, accessible, no API calls | Done | `index.html` and `styles.css` in this repository; checked at phone and desktop widths (16 px gutter, no horizontal scroll) |
+
+## Design notes
+
+- Responsive layout: single column on phones, two or three columns from 640 px and 900 px.
+- Accessible: skip link, landmarks, one `h1`, visible focus ring, `prefers-reduced-motion` respected, and light and dark color schemes.
+- Colors are CSS custom properties defined on `:root`.

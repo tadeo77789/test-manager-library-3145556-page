@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manager Library: a system for a small library to manage its book catalog, members and loans.">
+  <title>Manager Library · Library management system</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Manager Library, home">
+        <span class="brand-mark" aria-hidden="true">ML</span>
+        <span class="brand-name">Manager Library</span>
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <ul>
+          <li><a href="#what-it-is">About</a></li>
+          <li><a href="#actors">Actors</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#design">Design</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#repos">Repositories</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Technical test · ADSO certification 3145556</p>
+          <h1 id="hero-title">Manager Library</h1>
+          <p class="lead">
+            A small library system to keep its book catalog, its members and its loans in one place,
+            and to see which books are borrowed the most.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#features">See the features</a>
+            <a class="btn btn-ghost" href="#repos">Browse the repositories</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <div class="card-head">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="card-title">Loan #0142</span>
+          </div>
+          <ul class="card-lines">
+            <li><span>Member</span><strong>Lucia Herrera</strong></li>
+            <li><span>Lent on</span><strong>Oct 6, 2026</strong></li>
+            <li><span>Due</span><strong>Oct 20, 2026</strong></li>
+          </ul>
+          <ul class="card-books">
+            <li><span class="tag tag-open">Open</span> Clean Architecture</li>
+            <li><span class="tag tag-open">Open</span> Domain-Driven Design</li>
+            <li><span class="tag tag-late">Overdue</span> The Pragmatic Programmer</li>
+          </ul>
+          <p class="card-note">Status is calculated from the dates, never stored.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="what-it-is" class="section" aria-labelledby="what-title">
+      <div class="wrap">
+        <h2 id="what-title">What it is</h2>
+        <p class="section-intro">
+          Manager Library replaces loose notebooks and spreadsheets with a single system. Librarians
+          register loans and returns, administrators maintain the catalog and the members, and the
+          team gets a report of the most borrowed titles at any time.
+        </p>
+        <p class="scope">
+          Out of scope on purpose: fines and payments, reservations, renewals, email or SMS, bulk import,
+          loans between branches, and book attributes beyond title, author, ISBN, category and copies.
+        </p>
+      </div>
+    </section>
+
+    <section id="actors" class="section section-alt" aria-labelledby="actors-title">
+      <div class="wrap">
+        <h2 id="actors-title">Actors</h2>
+        <div class="cards three">
+          <article class="card">
+            <h3>Administrator</h3>
+            <p>Maintains the book catalog and the members, creates librarians and sees every report.</p>
+            <p class="meta">Signs in with username and password</p>
+          </article>
+          <article class="card">
+            <h3>Librarian</h3>
+            <p>Registers loans and returns, and consults the catalog, the members and the overdue list.</p>
+            <p class="meta">Signs in with username and password</p>
+          </article>
+          <article class="card">
+            <h3>Member</h3>
+            <p>The person who borrows books. Members do not log in: they are data in the system, not users.</p>
+            <p class="meta">No access to the system</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="wrap">
+        <h2 id="features-title">Features</h2>
+        <ol class="features">
+          <li>
+            <span class="feature-num" aria-hidden="true">01</span>
+            <h3>Catalog</h3>
+            <p>Books with optional cover, five fixed categories, search by title or author, and soft delete.</p>
+          </li>
+          <li>
+            <span class="feature-num" aria-hidden="true">02</span>
+            <h3>Members</h3>
+            <p>Register members by name and unique document, and search them with pagination.</p>
+          </li>
+          <li>
+            <span class="feature-num" aria-hidden="true">03</span>
+            <h3>Loans</h3>
+            <p>One member, one to three books per loan. Each line takes a copy in the same operation, and a member can hold at most three open books.</p>
+          </li>
+          <li>
+            <span class="feature-num" aria-hidden="true">04</span>
+            <h3>Returns</h3>
+            <p>Return each book line on its own. Returned copies go back to the shelf in the same operation.</p>
+          </li>
+          <li>
+            <span class="feature-num" aria-hidden="true">05</span>
+            <h3>Overdue</h3>
+            <p>A list of loans past their due date, with the number of days late calculated from the dates.</p>
+          </li>
+          <li>
+            <span class="feature-num" aria-hidden="true">06</span>
+            <h3>Report</h3>
+            <p>The most borrowed books, grouped by the title, ISBN and category they had when they were lent.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="design" class="section section-alt" aria-labelledby="design-title">
+      <div class="wrap">
+        <h2 id="design-title">Five ideas behind the design</h2>
+        <p class="section-intro">
+          The architecture overview of the specification boils down to five rules. They are what keeps
+          the data honest over time.
+        </p>
+        <ol class="ideas">
+          <li>
+            <h3>A loan is an immutable fact</h3>
+            <p>Only the return date of a line changes, once.</p>
+          </li>
+          <li>
+            <h3>Copies move inside the same operation</h3>
+            <p>Creating or closing a loan line updates the available copies in the same transaction.</p>
+          </li>
+          <li>
+            <h3>State is calculated</h3>
+            <p>Open, overdue and closed are not stored in the database. They are derived from the dates.</p>
+          </li>
+          <li>
+            <h3>Frozen data does not follow the catalog</h3>
+            <p>Renaming a book today does not change last October's report.</p>
+          </li>
+          <li>
+            <h3>The database is the last barrier</h3>
+            <p>Constraints reject invalid copy counts even if something bypasses the application.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="stack" class="section" aria-labelledby="stack-title">
+      <div class="wrap">
+        <h2 id="stack-title">Technology</h2>
+        <p class="section-intro">
+          The specification was written for Python and .NET. The challenge translates the technology
+          while keeping the business rules, the HTTP contract and the data model.
+        </p>
+        <div class="stack">
+          <div class="stack-item">
+            <span class="stack-label">Frontend</span>
+            <strong>React</strong>
+          </div>
+          <div class="stack-item">
+            <span class="stack-label">Backend</span>
+            <strong>PHP 8.3 · Laravel</strong>
+          </div>
+          <div class="stack-item">
+            <span class="stack-label">Database</span>
+            <strong>PostgreSQL 16</strong>
+          </div>
+          <div class="stack-item">
+            <span class="stack-label">Public site</span>
+            <strong>Static HTML and CSS</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="repos" class="section section-alt" aria-labelledby="repos-title">
+      <div class="wrap">
+        <h2 id="repos-title">Repositories</h2>
+        <p class="section-intro">The project is split into six repositories.</p>
+        <ul class="repo-list">
+          <li>
+            <a href="https://github.com/tadeo77789/test-manager-library-3145556-docs">
+              <strong>docs</strong><span>The specification, and its Laravel and React translation</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tadeo77789/test-manager-library-3145556-api">
+              <strong>api</strong><span>Backend in PHP with Laravel</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tadeo77789/test-manager-library-3145556-app">
+              <strong>app</strong><span>Frontend in React</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tadeo77789/test-manager-library-3145556-page">
+              <strong>page</strong><span>This public presentation site</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tadeo77789/test-manager-library-3145556-infra">
+              <strong>infra</strong><span>Containers, network and an empty PostgreSQL 16 database</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tadeo77789/test-manager-library-3145556-tool">
+              <strong>tool</strong><span>Demo data seeder that uses the API</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>Manager Library · Technical test, ADSO certification 3145556</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+</body>
+</html>
